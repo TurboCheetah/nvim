@@ -8,6 +8,9 @@ M.general = {
     ["<leader>pm"] = { ":Mason<CR>", "open Mason", opts = { nowait = true } },
     ["|"] = { ":vsplit<CR>", "open a vertical split", opts = { nowait = true } },
   },
+  v = {
+    [">"] = { ">gv", "indent" },
+  },
 }
 
 -- more keybinds!
