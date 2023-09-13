@@ -59,24 +59,24 @@ local plugins = {
 
     {
       "NvChad/nvcommunity",
-      { import = "nvcommunity.completion.copilot" },
+      -- { import = "nvcommunity.completion.copilot" },
       { import = "nvcommunity.git.lazygit" },
       { import = "nvcommunity.diagnostics.trouble" },
       { import = "nvcommunity.motion.harpoon" },
     },
-    -- {
-    --   "zbirenbaum/copilot.lua",
-    --   cmd = "Copilot",
-    --   event = "InsertEnter",
-    --   opts = {
-    --     suggestion = {
-    --       auto_trigger = true,
-    --     },
-    --   },
-    --   config = function()
-    --     require("copilot").setup {}
-    --   end,
-    -- },
+    {
+      "zbirenbaum/copilot.lua",
+      cmd = "Copilot",
+      event = "InsertEnter",
+      opts = {
+        suggestion = {
+          auto_trigger = true,
+          keymap = {
+            accept = "<A-a>",
+          },
+        },
+      },
+    },
   },
 
   -- All NvChad plugins are lazy-loaded by default
