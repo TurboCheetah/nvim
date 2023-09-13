@@ -55,6 +55,7 @@ M.mason = {
     "black",
     "pyright",
     "ruff-lsp",
+    "ruff",
     "debugpy",
     "isort",
 
