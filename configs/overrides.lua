@@ -78,6 +78,7 @@ M.mason = {
     "actionlint",
     "astro-language-server",
     "marksman",
+    "markdownlint",
   },
 }
 
