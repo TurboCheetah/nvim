@@ -64,18 +64,50 @@ local plugins = {
       { import = "nvcommunity.diagnostics.trouble" },
       { import = "nvcommunity.motion.harpoon" },
     },
+    -- {
+    --   "zbirenbaum/copilot.lua",
+    --   cmd = "Copilot",
+    --   event = "InsertEnter",
+    --   opts = {
+    --     suggestion = {
+    --       auto_trigger = true,
+    --       keymap = {
+    --         accept = "<A-a>",
+    --       },
+    --     },
+    --   },
+    -- },
     {
-      "zbirenbaum/copilot.lua",
-      cmd = "Copilot",
-      event = "InsertEnter",
-      opts = {
-        suggestion = {
-          auto_trigger = true,
-          keymap = {
-            accept = "<A-a>",
-          },
-        },
-      },
+      "saimo/peek.nvim",
+      event = { "VeryLazy" },
+      build = "deno task --quiet build:fast",
+      config = function()
+        require("peek").setup {
+          app = "browser",
+        }
+        -- refer to `configuration to change defaults`
+        vim.api.nvim_create_user_command("PeekOpen", require("peek").open, {})
+        vim.api.nvim_create_user_command("PeekClose", require("peek").close, {})
+      end,
+    },
+    {
+      "Exafunction/codeium.vim",
+      event = "LspAttach",
+      config = function()
+        vim.keymap.set("i", "<A-a>", function()
+          return vim.fn["codeium#Accept"]()
+        end, { expr = true })
+        vim.keymap.set("i", "<A-.>", function()
+          return vim.fn["codeium#CycleCompletions"](1)
+        end, { expr = true })
+        vim.keymap.set("i", "<A-,>", function()
+          return vim.fn["codeium#CycleCompletions"](-1)
+        end, { expr = true })
+      end,
+    },
+    {
+      "David-Kunz/gen.nvim",
+      event = "VeryLazy",
     },
   },
 
